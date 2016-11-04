@@ -1,0 +1,34 @@
+.dir-title {
+    margin: 10px 156px 20px 0;
+    display: inline-flex;
+}
+.c_folder_upload_btn {
+
+}
+.dir-title .crumb .separator {
+    width: 8px;
+    height: 28px;
+    margin: 0 5px;
+    line-height: 28px;
+    color: #999;
+}
+.twr {
+    display: inline-block;
+    font: normal normal normal 14px/1 'Tower';
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.c_table thead tr {
+    font-size: .6em;
+}
+.c_table td {
+    width: 25%;
+}
+.c_folder_file_action {
+    font-size: .8em;
+}
+.c_folder_file_action a {
+    margin: 0 7px;
+}

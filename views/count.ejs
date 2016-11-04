@@ -1,0 +1,141 @@
+<% include _head.ejs %>
+<link href="/css/home.css" rel="stylesheet">
+<link href="/css/count.css" rel="stylesheet">
+<% include _header.ejs %>
+
+<div class="navbar navbar-default navbar-static-top navber-transparent" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">菜单</span>
+            </button>
+            <a class="navbar-brand" href="/">nucleus</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="projectindex">项目</a></li>
+                <li><a href="/allweekly">周报</a></li>
+                <li><a href="/event">动态</a></li>
+                <li><a href="#contact">个人中心</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name %> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人资料</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 page">
+            <div data-page-name="数据统计" id="page-project-stats">
+
+                <div class="section section-stats">
+                    <h3>统计</h3>
+                    <%
+                        var delay=0;
+                        var undeal =0;
+                    todos.forEach(function (item) {
+
+                        var date =  Date.parse(new Date(item.finish_time));
+                        var current =new Date().getTime();
+                        if(current>=date&&item.finished==0)
+                        {
+                           undeal++;
+                        }
+                        else if(current<date)
+                        {
+                            delay++;
+                        }
+
+//                                     var year = date.getFullYear();
+//                                     var month = date.getMonth() + 1;
+//                                     var day = date.getDate();
+//                                     var hours = date.getHours();
+//                                     var minutes = '0' + date.getMinutes();
+//                                     minutes = minutes.substr(-2);
+                                }) ;
+
+                    %>
+                    <ul class="summary">
+                        <li>
+                            <span class="name">待处理任务</span>
+                            <span class="count"><%=undeal%></span>
+                        </li>
+                        <li>
+                            <span class="name">延误任务</span>
+                            <span class=" delay "><%=delay%></span>
+                        </li>
+                        <li>
+                            <span class="name">总任务数</span>
+                            <span class="count"><%=todos.length%></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="section section-contribution">
+                    <h3>贡献</h3>
+                    <p class="desc">
+                        截至目前，该项目共有 <span class="members count"><%=projects.length%></span> 位成员<span class="todos">，共完成 <span class="count"><%=todosf.length%></span> 条任务</span><span style="display: inline;" class="messages">，产生 <span class="count"><%=topics.length%></span> 条讨论</span><span style="display: inline;" class="docs">，上传了 <span class="count"><%=weekly.length%></span> 篇周报</span>。
+                    </p>
+
+                    <table class="contribution-table">
+                        <tbody>
+                        <%
+                            if(todosf.length>0)
+                            {
+                         projects.forEach(function(item)
+                         {
+                         %>
+                        <tr>
+                            <td class="member">
+                                <img src="/img/bj.jpg" class="avatar">
+                                <span class="name2 text-overflow"><%=item.user_name%></span>
+                            </td>
+                            <td class="contribution">
+                                <div class="bar">
+                                    <%
+                                        var count=0;
+                                        todosf.forEach(function(it){
+                                            if(it.member_id==item.user_id&&it.finished==1)
+                                            {
+                                                count++;
+                                            }
+                                        });
+                                    %>
+                                    <div class="inner-bar"  data-position="top" style="width: <%=100*(count/todos.length)%>%">
+                                      <%=item.user_name%> 共完成 <span class="count">
+                                        <%=count%></span>条任务
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                             <%
+                             });
+                             }
+                                 else
+                             {
+                        %>
+                        <div>
+                            <p class="title">hmmm... 项目还没有任何进展，快去干活吧！</p>
+                        </div>
+                        <% }%>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<% include _footer.ejs %>
+<% include _foot.ejs %>

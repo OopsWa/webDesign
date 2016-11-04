@@ -1,0 +1,64 @@
+.project-head{
+    position: absolute;
+    top: 27px;
+    float: right;
+    right: 40px;
+    font-size: 1em;
+}
+.project-body{
+    margin: 0 30px 80px;
+
+}
+.new-project{
+    float: right; line-height: 16px;margin: 7px 10px;font-size: 18px; padding-right: 8px;
+}
+.view{
+    float: right;
+
+}
+.projects-footer {
+    margin: 0 auto 20px;
+    padding: 10px 10px 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 900px;
+    font-size: 14px;
+    box-sizing: border-box;
+    border-top: solid 1px #eee;
+}
+.newproject{
+    float: right;
+    margin: 0px 14px;
+}
+.project:hover {
+    background: #f9f9f9;
+    border: 1px solid #eaeaea;
+}
+.project {
+    display: block;
+    width: 222px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    float: left;
+    position: relative;
+}
+.name {
+    display: block;
+    font-size: 17px;
+    color: #333333;
+    line-height: 20px;
+    text-align: center;
+    margin: 0 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.badge {
+    display: block;
+    margin:15px auto 8px;
+    text-align: center;
+    background-color: transparent;
+    border-color: transparent;
+}
