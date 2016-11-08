@@ -1,5 +1,5 @@
 var config = {
-  port: 4000,
+  port: 4001,
   cookie: {
     cookieSecret: 'team-work',
     maxAge: 1000 * 60 * 60 * 24 * 30
@@ -16,11 +16,11 @@ var config = {
   // },
 
    mysql: {
-      host: 'localhost',
-      user: 'root',
-      password: '123456',
+      host: '115.159.65.172',
+      user: 'team',
+      password: 'passteam',
       port: 3306,
-      database: 'nucleus'
+      database: 'team2'
     },
 
 
